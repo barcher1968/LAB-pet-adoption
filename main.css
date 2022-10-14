@@ -3,6 +3,8 @@
 .button{
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1% 30% 3% 30%;
 }
 
 #app{
@@ -11,8 +13,10 @@
   justify-content: space-evenly;
   gap: 6.25%;
   flex-direction: row;
+}
 
-
+#app > * {
+  flex: 0 1 25%;
 }
 
 .dog{
@@ -25,4 +29,15 @@
 
 .dino{
   background-color: orange;
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+img{
+  width: 100%;
 }
