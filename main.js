@@ -241,17 +241,17 @@ const pets = [
     }
   ];
 for (let i = 0; i < pets.length; i++) {
-const app = document.querySelector("#app").innerHTML += `<div class="card text-center">
-<div class="card-header">
-${pets[i].name}  
-</div>
+const app = document.querySelector("#app").innerHTML += 
+`<div class="card text-center">
+  <div class="card-header">
+    ${pets[i].name}  
+  </div>
 <div class="card-body">
-<img src= ${pets[i].imageUrl} alt="animal picture">
-<p>${pets[i].color}</p>
+  <img src= ${pets[i].imageUrl} alt="animal picture">
+  <p>${pets[i].color}</p>
   <p class="card-text">${pets[i].specialSkill}</p>
- 
 </div>
-<div class="card-footer text-muted">
+<div class="card-footer ${pets[i].type}">
   ${pets[i].type}
 </div>
 </div>`;
