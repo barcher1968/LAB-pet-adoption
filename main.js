@@ -241,7 +241,9 @@ const pets = [
     }
   ];
 for (let i = 0; i < pets.length; i++) {
-const app = document.querySelector("#app").innerHTML += 
+const app = document.querySelector("#app")
+
+app.innerHTML += 
 `<div class="card text-center">
   <div class="card-header">
     ${pets[i].name}  
@@ -256,7 +258,61 @@ const app = document.querySelector("#app").innerHTML +=
 </div>
 </div>`;
 }
+// Render to DOM utility function
+const renderToDom = (divId, htmlToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = htmlToRender;
+};
 
-  //  for (let i = 0; i < pets.length; i++) {app.innerHTML += `${pets[i].name} ${pets[i].color}`
+// get the cards on the DOM
+const cardsOnDom = (array) => {
+  let domString = "";
+  for (const member of array) {
+    domString += `<div class="card text-center">
+    <div class="card-header">
+      ${member.name}  
+    </div>
+  <div class="card-body">
+    <img src= ${member.imageUrl} alt="animal picture">
+    <p>${member.color}</p>
+    <p class="card-text">${member.specialSkill}</p>
+  </div>
+  <div class="card-footer ${member.type}">
+    ${member.type}
+  </div>
+  </div>`;
+  }
 
-  //  }
+  renderToDom("#app", domString);
+}
+
+
+
+const filter = (animals, requestedType) => {
+  const typeArray = [];
+  for (const animal of animals) {
+    if (animal.type === requestedType) {
+      typeArray.push(animal);
+    } 
+  }
+  return typeArray;
+}
+
+const dogButton = document.querySelector("#dogButton");
+dogButton.addEventListener('click', () => {
+  const dogs = filter(pets, 'dog');
+  cardsOnDom(dogs);
+console.log("button was clicked");
+});
+const catButton = document.querySelector("#catButton");
+catButton.addEventListener('click', () => {
+  const cats = filter(pets, 'cat');
+  cardsOnDom(cats);
+console.log("button was clicked");
+});
+const dinoButton = document.querySelector("#dinoButton");
+dinoButton.addEventListener('click', () => {
+  const dinos = filter(pets, 'dino');
+  cardsOnDom(dinos);
+console.log("button was clicked");
+});
