@@ -316,3 +316,27 @@ dinoButton.addEventListener('click', () => {
   cardsOnDom(dinos);
 console.log("button was clicked");
 });
+const allButton=document.querySelector("#allButton");
+allButton.addEventListener('click', () => {  
+  cardsOnDom(pets);
+console.log("button was clicked");
+});
+
+const form = document.querySelector('form');
+
+const createPet = (e) => {
+  e.preventDefault();
+
+  const newPetObj = {
+    id: pets.length + 1,
+    name: document.querySelector("#name").value,
+    color: document.querySelector("#color").value,
+    specialSkill: document.querySelector("#specialSkill").value,
+    type: document.querySelector("#type").value,
+    imageUrl: document.querySelector("#imageUrl").value
+  }
+  pets.push(newPetObj);
+  cardsOnDom(pets);
+  form.reset();
+}
+form.addEventListener('submit', createPet);

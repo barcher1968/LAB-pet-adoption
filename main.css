@@ -6,6 +6,14 @@
   justify-content: space-around;
   margin: 1% 30% 3% 30%;
 }
+.btn-group{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  margin: 1% 30% 3% 30%;
+}
 
 #app{
   display: flex;
