@@ -252,6 +252,7 @@ app.innerHTML +=
   <img src= ${pets[i].imageUrl} alt="animal picture">
   <p>${pets[i].color}</p>
   <p class="card-text">${pets[i].specialSkill}</p>
+  <button class="btn btn-danger" id="delete--${pets.id}">Delete</button>
 </div>
 <div class="card-footer ${pets[i].type}">
   ${pets[i].type}
@@ -279,6 +280,7 @@ const cardsOnDom = (array) => {
   </div>
   <div class="card-footer ${member.type}">
     ${member.type}
+  <button class="btn btn-danger" id="delete--${member.id}">Delete</button>
   </div>
   </div>`;
   }
@@ -340,3 +342,26 @@ const createPet = (e) => {
   form.reset();
 }
 form.addEventListener('submit', createPet);
+
+const app = document.querySelector("#app");
+
+app.addEventListener('click', (e) => {
+  // 3. check e.target.id includes "delete"
+  if (e.target.id.includes("delete")) {
+    const [, id] = e.target.id.split("--");
+
+    // 4. add logic to remove from array
+    const index = pets.findIndex(e => e.id === Number(id));
+    pets.splice(index, 1);
+
+    // 5. Repaint the DOM wiconst app = document.querySelector("#app");th the updated array
+    cardsOnDom(pets);
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+  events(); // ALWAYS LAST
+}
+
+startApp();
