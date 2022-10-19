@@ -25,6 +25,7 @@
 
 #app > * {
   flex: 0 1 25%;
+  margin-bottom: 20px;
 }
 
 .dog{
